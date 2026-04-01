@@ -8,7 +8,8 @@ import Link from "next/link";
 interface SpinRecord {
   id: string;
   spunAt: string;
-  winner: { name: string; description: string };
+  winnerName: string;
+  winner: { name: string; description: string } | null;
   spunBy: { name: string };
 }
 
@@ -73,9 +74,9 @@ export default function HistoryPage({ params }: { params: Promise<{ id: string }
               </div>
               <div className="flex-1">
                 <p className="font-semibold text-gray-800">
-                  🎁 {record.winner.name}
+                  🎁 {record.winnerName}
                 </p>
-                {record.winner.description && (
+                {record.winner?.description && (
                   <p className="text-sm text-gray-400">{record.winner.description}</p>
                 )}
               </div>

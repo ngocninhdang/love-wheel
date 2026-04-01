@@ -33,10 +33,12 @@ export async function POST(
   const winnerIndex = Math.floor(Math.random() * wheel.items.length);
   const winner = wheel.items[winnerIndex];
 
+  // Save history with winner name (persists even if item is deleted)
   const record = await prisma.spinHistory.create({
     data: {
       wheelId: id,
       winnerId: winner.id,
+      winnerName: winner.name,
       spunById: session.user.id,
     },
     include: { winner: true },

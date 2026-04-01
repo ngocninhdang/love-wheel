@@ -16,7 +16,8 @@ interface WheelItem {
 interface SpinRecord {
   id: string;
   spunAt: string;
-  winner: { name: string };
+  winnerName: string;
+  winner: { name: string } | null;
   spunBy: { name: string };
 }
 
@@ -245,7 +246,7 @@ export default function WheelPage({ params }: { params: Promise<{ id: string }> 
                 {wheel.history.slice(0, 5).map((h) => (
                   <div key={h.id} className="flex items-center justify-between text-sm">
                     <span className="text-rose-600 font-medium">
-                      🎁 {h.winner.name}
+                      🎁 {h.winnerName}
                     </span>
                     <span className="text-gray-400 text-xs">
                       {new Date(h.spunAt).toLocaleDateString("vi-VN")}
