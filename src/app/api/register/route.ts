@@ -27,8 +27,7 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ id: user.id, email: user.email, name: user.name });
-  } catch (err) {
-    console.error("Register error:", err);
-    return NextResponse.json({ error: "Đã có lỗi xảy ra", details: String(err) }, { status: 500 });
+  } catch {
+    return NextResponse.json({ error: "Đã có lỗi xảy ra" }, { status: 500 });
   }
 }
